@@ -16,13 +16,23 @@
 
 # COMMAND ----------
 
+# MAGIC %md #### Setup
+
+# COMMAND ----------
+
+import sys 
+sys.path.append("/Workspace/Repos/michael.mengarelli@databricks.com/fuego/common")
+
+# COMMAND ----------
+
+import datetime
+import lending_club.functions as fn
+import common_utils as ut
+
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 from sklearn.model_selection import train_test_split
 
 from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
-
-import common.lending_club.functions as fn
-import common.lending_club.plots as pt
 
 fn.init()
 
@@ -46,7 +56,7 @@ y_train_enc, y_test_enc = fn.encode_labels(y_train, y_test)
 # COMMAND ----------
 
 # MAGIC %md #### Train
-# MAGIC * MLflow Auuto-logging ✅
+# MAGIC * MLflow Auto-logging ✅
 # MAGIC * Parameter search ✅ 
 
 # COMMAND ----------
@@ -69,9 +79,5 @@ best_model = grid_result.best_estimator_.model
 
 # COMMAND ----------
 
-grid_result.best_params_
-
-# COMMAND ----------
-
-metrics = best_model.evaluate(X_test_enc, y_test_enc)
-metrics
+print(f"Best Params: {grid_result.best_params_}")
+print(f"Best Metrics: {best_model.evaluate(X_test_enc, y_test_enc)}")
