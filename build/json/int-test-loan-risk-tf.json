@@ -1,0 +1,7 @@
+{
+  "run_name": "loan_risk_tf",
+  "existing_cluster_id": "1206-173956-dmbcx92q",
+  "notebook_task": {
+    "notebook_path": "/Repos/michael.mengarelli@databricks.com/fuego/notebooks/loan_risk_tf"
+  }
+}
