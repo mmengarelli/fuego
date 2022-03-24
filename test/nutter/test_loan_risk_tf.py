@@ -1,9 +1,7 @@
 # Databricks notebook source
-from runtime.nutterfixture import NutterFixture, tag
+from testbase import BaseFixture
 
-# COMMAND ----------
-
-class MyTestFixture(NutterFixture):
+class MyTestFixture(BaseFixture):
    def run_test_loan_risk_tf(self):
       dbutils.notebook.run("/Repos/michael.mengarelli@databricks.com/fuego/notebooks/loan_risk_tf", 600)
 
